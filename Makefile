@@ -534,6 +534,6 @@ publish-cloud-images:
 
 .PHONY: custom-torch-2-image
 custom-torch-2-image:
-	docker build --progress=plain -f Dockerfile -t garrettgoon/torch-2-test .
+	docker buildx build --platform linux/amd64  --progress=plain -f Dockerfile -t garrettgoon/torch-2-test .
 	docker push garrettgoon/torch-2-test
 
