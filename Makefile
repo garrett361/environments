@@ -530,4 +530,10 @@ publish-cloud-images:
 	cd cloud \
 		&& packer build $(PACKER_FLAGS) -machine-readable -var "image_suffix=-$(SHORT_GIT_HASH)" environments-packer.json \
 		| tee $(ARTIFACTS_DIR)/packer-log
-		
+
+
+.PHONY: custom-torch-2-image
+custom-torch-2-image:
+	docker build --progress=plain -f Dockerfile -t garrettgoon/torch-2-test .
+	docker push garrettgoon/torch-2-test
+
